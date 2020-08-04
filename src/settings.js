@@ -1,4 +1,4 @@
 export default {
   // "HOST":'http://api.visualwebsite.com',
-  "HOST":'http://127.0.0.1:8000',
+  "HOST":'http://39.100.141.148:8000',
 }
