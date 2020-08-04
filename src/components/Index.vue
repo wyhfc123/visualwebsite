@@ -1,7 +1,10 @@
 <template>
     <div class="index">
-      <chart-one></chart-one>
-      <chart-two></chart-two>
+                <!--bb props中的参数-->
+      <chart-one :bb="lic" ></chart-one>
+<!--                  对传递事件设置事件函数   clicknow-->
+      <chart-two @clicknow="clicknow"></chart-two>
+      <span>子传父{{count}}</span>
     </div>
 </template>
 
@@ -14,15 +17,26 @@
           ChartOne,
           ChartTwo
         },
-      //   data() {
-      //     return {
-      //         chartOptions: {
-      //             series: [{
-      //                 data: [3, 4, 5] // sample data
-      //             }]
-      //         }
-      //     }
-      // }
+        data(){
+          return {
+            //子传父
+            lic:[
+                {id:0,text:'苹果'},
+                {id:1,text:'香蕉'},
+                {id:2,text:'橙子'},
+            ],
+            // 父传子
+          count:0
+          }
+
+        },
+        methods:{
+          clicknow(count){
+            console.log('子传父数据',count)
+            this.count=count
+
+          }
+        }
     }
 </script>
 

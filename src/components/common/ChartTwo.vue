@@ -1,12 +1,13 @@
 <template>
   <div class="charttwo" style="width: 500px;float: right;margin-top: -400px;margin-right: 50px">
     <highcharts :options="chartOptions"></highcharts>
-
+    <button @click="clickfun" >按钮{{count}}</button>
   </div>
 </template>
 
 <script>
   export default {
+    //父传子
     name: "chartTwo",
     data() {
       return {
@@ -18,7 +19,10 @@
             categories: []
           },
           series: []
-        }
+        },
+        //子传父
+        count:0,
+
       }
     },
     created() {
@@ -46,6 +50,11 @@
           })
 
         })
+      },
+      clickfun(){
+        this.count++;
+                      //传递事件
+        this.$emit('clicknow',this.count)
       }
     }
   }

@@ -2,14 +2,21 @@
   <div class="chartone" style="width: 500px;margin-left: 50px">
     <highcharts :options="chartOptions"></highcharts>
     <div style="text-align: center"><button @click="data_save()">保存</button></div>
+
+    <span v-for="item in bb" :key="item.id">
+      <span>{{item.text}}</span><br>
+    </span>
+
   </div>
 </template>
 
 <script>
   export default {
     name: "ChartOne",
+    props:["bb"],
     data() {
       return {
+
         chartOptions: {
         chart: {
             type: 'column'
@@ -57,7 +64,9 @@
       get_number(){
         let _this=this;
         this.$axios.get(this.$settings.HOST+"/api/getchartone/").then(
+
             response=>{
+               console.log(response.data)
               this.chartOptions.series[0].data=response.data
                _this.$message({
                message:error.response.data,
